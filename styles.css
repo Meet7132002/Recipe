@@ -1,0 +1,162 @@
+/* Style for the body of the document */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+/* Style for the header */
+header {
+    background-color: #ff6347; 
+    color: white; 
+    padding: 10px 0;
+    text-align: center; /* Center align text */
+}
+
+/* Style for the image in the header */
+header img {
+    height: 50px; /* Set image height */
+    vertical-align: middle; /* Align image vertically in the middle */
+}
+
+/* Padding for main section */
+main {
+    padding: 20px;
+}
+
+/* Style for headings */
+h1, h2 {
+    color: #333;
+}
+
+/* Style for paragraphs */
+p {
+    line-height: 1.6; /* Set line height */
+}
+
+/* Style for footer */
+footer {
+    background-color: #333;
+    color: white; 
+    text-align: center; /* Center align text */
+    padding: 10px 0;
+}
+
+/* Remove default list style and padding for footer ul */
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Style for footer list items */
+footer ul li {
+    display: inline; /* Display list items inline */
+    margin: 0 10px; /* Add margin between items */
+}
+
+/* Style for footer links */
+footer ul li a {
+    color: white;
+    text-decoration: none; /* Remove underline */
+}
+
+/* Center align search bar and add margin */
+.search-bar {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Style for search input */
+.search-bar input {
+    padding: 10px; /* Add padding */
+    width: 80%; /* Set width */
+    max-width: 400px; /* Max width */
+    border: 1px solid #ccc;
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Padding for recipes section */
+.recipes-section {
+    padding: 20px;
+}
+
+/* Flexbox layout for individual recipe items */
+.recipe {
+    display: flex;
+    align-items: center; /* Center align items */
+    margin-bottom: 20px; /* Space between recipes */
+}
+
+.recipe img {
+    height: 100px; /* Set image height */
+    margin-right: 20px; /* Space between image and text */
+}
+
+/* Style for recipe text */
+.recipe p {
+    font-size: 1.2em; /* Larger font size */
+    color: #333;
+}
+
+/* Center align submit section and add margin */
+.submit-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Style for submit button */
+.submit-section button {
+    padding: 10px 20px; /* Add padding */
+    background-color: #ff6347; 
+    color: white; 
+    border: none; /* Remove border */
+    border-radius: 5px; 
+    cursor: pointer;
+}
+
+/* Hover effect for submit button */
+.submit-section button:hover {
+    background-color: #e55337;
+}
+
+/* Padding for submit form section */
+.submit-form {
+    padding: 20px;
+}
+
+/* Flexbox layout for form */
+.submit-form form {
+    display: flex;
+    flex-direction: column; /* Stack form elements vertically */
+}
+
+/* Style for form labels */
+.submit-form label {
+    margin-top: 10px; 
+    font-weight: bold; /* Bold text */
+}
+
+/* Style for form inputs and textareas */
+.submit-form input, .submit-form textarea {
+    padding: 10px; 
+    margin-top: 5px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+}
+
+/* Style for form submit button */
+.submit-form button {
+    margin-top: 20px; 
+    padding: 10px 20px; /* Add padding */
+    background-color: #ff6347; 
+    color: white;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Hover effect for form submit button */
+.submit-form button:hover {
+    background-color: #e55337; 
+}
