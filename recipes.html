@@ -12,26 +12,157 @@
 <body>
     <header>
         <h1>Recipes</h1>
-        <img src="images/symbol.jpeg">
+        <img src="images/symbol.jpeg" alt="Symbol">
     </header>
     <div class="search-bar">
-        <input type="text" placeholder="Search for recipes...">
+        <input type="text" id="search-input" placeholder="Search for recipes...">
     </div>
+    <div id="search-results" class="recipes-section"></div>
     <div class="recipes-section">
         <h2>Popular Recipes</h2>
-        <div class="recipe">
-            <img src="images/pizza.jpeg">
+        <div class="recipe" onclick="showRecipe('Cheese Pizza')">
+            <img src="images/pizza.jpeg" alt="Cheese Pizza">
             <p>Cheese Pizza</p>
+        </div>
+        <div class="recipe" onclick="showRecipe('Spaghetti Carbonara')">
+            <img src="images/spaghetti.jpeg" alt="Spaghetti Carbonara">
+            <p>Spaghetti Carbonara</p>
+        </div>
+        <div class="recipe" onclick="showRecipe('Chicken Curry')">
+            <img src="images/curry.jpeg" alt="Chicken Curry">
+            <p>Chicken Curry</p>
+        </div>
+        <div class="recipe" onclick="showRecipe('Chocolate Cake')">
+            <img src="images/cake.jpeg" alt="Chocolate Cake">
+            <p>Chocolate Cake</p>
         </div>
     </div>
     <div class="recipes-section">
         <h2>Easy to Make</h2>
-        <div class="recipe">
-            <img src="images/macncheese.jpeg">
+        <div class="recipe" onclick="showRecipe('Mac and Cheese')">
+            <img src="images/macncheese.jpeg" alt="Mac and Cheese">
             <p>Mac and Cheese</p>
         </div>
+        <div class="recipe" onclick="showRecipe('Beef Tacos')">
+            <img src="images/tacos.jpeg" alt="Beef Tacos">
+            <p>Beef Tacos</p>
+        </div>
+        <div class="recipe" onclick="showRecipe('Caesar Salad')">
+            <img src="images/salad.jpeg" alt="Caesar Salad">
+            <p>Caesar Salad</p>
+        </div>
+    </div>
     <div class="submit-section">
         <button onclick="location.href='submit.html'">Submit Your Recipe</button>
     </div>
+    <footer>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="recipes.html">Recipes</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </footer>
+
+    <div id="recipe-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-recipe-name"></h2>
+            <img id="modal-recipe-image" src="" alt="">
+            <h3>Ingredients</h3>
+            <ul id="modal-recipe-ingredients"></ul>
+            <h3>Steps</h3>
+            <ol id="modal-recipe-steps"></ol>
+        </div>
+    </div>
+
+    <script>
+        const recipes = {
+            'Cheese Pizza': {
+                image: 'images/pizza.jpeg',
+                ingredients: ['Dough', 'Tomato Sauce', 'Cheese'],
+                steps: ['Prepare the dough', 'Spread tomato sauce', 'Add cheese', 'Bake in oven']
+            },
+            'Mac and Cheese': {
+                image: 'images/macncheese.jpeg',
+                ingredients: ['Macaroni', 'Cheese', 'Milk', 'Butter'],
+                steps: ['Cook macaroni', 'Prepare cheese sauce', 'Mix macaroni with sauce', 'Bake in oven']
+            },
+            'Spaghetti Carbonara': {
+                image: 'images/spaghetti.jpeg',
+                ingredients: ['Spaghetti', 'Eggs', 'Pancetta', 'Parmesan Cheese'],
+                steps: ['Cook spaghetti', 'Fry pancetta', 'Mix eggs and cheese', 'Combine everything']
+            },
+            'Chicken Curry': {
+                image: 'images/curry.jpeg',
+                ingredients: ['Chicken', 'Curry Powder', 'Coconut Milk', 'Onion'],
+                steps: ['Cook onion', 'Add chicken and curry powder', 'Pour coconut milk', 'Simmer until cooked']
+            },
+            'Chocolate Cake': {
+                image: 'images/cake.jpeg',
+                ingredients: ['Flour', 'Sugar', 'Cocoa Powder', 'Eggs', 'Butter'],
+                steps: ['Mix dry ingredients', 'Add wet ingredients', 'Bake in oven', 'Let it cool']
+            },
+            'Beef Tacos': {
+                image: 'images/tacos.jpeg',
+                ingredients: ['Ground Beef', 'Taco Shells', 'Lettuce', 'Tomato', 'Cheese'],
+                steps: ['Cook ground beef', 'Prepare toppings', 'Assemble tacos']
+            },
+            'Caesar Salad': {
+                image: 'images/salad.jpeg',
+                ingredients: ['Romaine Lettuce', 'Caesar Dressing', 'Croutons', 'Parmesan Cheese'],
+                steps: ['Chop lettuce', 'Add dressing', 'Add croutons and cheese', 'Toss salad']
+            }
+        };
+
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+        const modal = document.getElementById('recipe-modal');
+        const modalRecipeName = document.getElementById('modal-recipe-name');
+        const modalRecipeImage = document.getElementById('modal-recipe-image');
+        const modalRecipeIngredients = document.getElementById('modal-recipe-ingredients');
+        const modalRecipeSteps = document.getElementById('modal-recipe-steps');
+
+        searchInput.addEventListener('input', function() {
+            const query = searchInput.value.toLowerCase();
+            searchResults.innerHTML = '';
+
+            for (const [name, recipe] of Object.entries(recipes)) {
+                if (name.toLowerCase().includes(query)) {
+                    const recipeDiv = document.createElement('div');
+                    recipeDiv.className = 'recipe';
+                    recipeDiv.innerHTML = `
+                        <img src="${recipe.image}" alt="${name}">
+                        <p>${name}</p>
+                    `;
+                    recipeDiv.onclick = () => showRecipe(name);
+                    searchResults.appendChild(recipeDiv);
+                }
+            }
+
+            if (searchResults.innerHTML === '') {
+                searchResults.innerHTML = '<p>No recipes found.</p>';
+            }
+        });
+
+        function showRecipe(name) {
+            const recipe = recipes[name];
+            modalRecipeName.textContent = name;
+            modalRecipeImage.src = recipe.image;
+            modalRecipeImage.alt = name;
+            modalRecipeIngredients.innerHTML = recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('');
+            modalRecipeSteps.innerHTML = recipe.steps.map(step => `<li>${step}</li>`).join('');
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>

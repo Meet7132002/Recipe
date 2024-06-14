@@ -35,32 +35,6 @@ p {
     line-height: 1.6; /* Set line height */
 }
 
-/* Style for footer */
-footer {
-    background-color: #333;
-    color: white; 
-    text-align: center; /* Center align text */
-    padding: 10px 0;
-}
-
-/* Remove default list style and padding for footer ul */
-footer ul {
-    list-style: none;
-    padding: 0;
-}
-
-/* Style for footer list items */
-footer ul li {
-    display: inline; /* Display list items inline */
-    margin: 0 10px; /* Add margin between items */
-}
-
-/* Style for footer links */
-footer ul li a {
-    color: white;
-    text-decoration: none; /* Remove underline */
-}
-
 /* Center align search bar and add margin */
 .search-bar {
     text-align: center;
@@ -160,3 +134,70 @@ footer ul li a {
 .submit-form button:hover {
     background-color: #e55337; 
 }
+
+a:hover {
+    background-color: #e55337; /* Change the background color */
+}
+
+.recipe p:hover {
+    background-color: #e55337;
+}
+
+.search-bar {
+    text-align: center;
+    margin: 20px;
+  }
+  .recipes-section {
+    margin: 20px;
+  }
+  .recipe {
+    margin: 10px 0;
+    cursor: pointer;
+  }
+  .recipe img {
+    width: 100px;
+    height: 100px;
+  }
+  .recipe p {
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: top;
+  }
+  .recipe:hover p {
+    background-color: #e55337;
+  }
+  footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+  }
+  footer ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  footer li {
+    display: inline;
+    margin-right: 10px;
+  }
+  footer a {
+    color: white;
+    text-decoration: none;
+  }
+  .modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  }
+  .modal-content {
+    margin: 20px;
+  }
+  .close {
+    cursor: pointer;
+    float: right;
+  }
